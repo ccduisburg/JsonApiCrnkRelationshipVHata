@@ -1,6 +1,6 @@
-package com.cemoli.crnk.repository;
+package com.cemoli.crnk.domain.repository;
 
-import com.cemoli.crnk.model.Address;
+import com.cemoli.crnk.domain.model.Address;
 import io.crnk.core.queryspec.QuerySpec;
 import io.crnk.core.repository.ResourceRepositoryBase;
 import io.crnk.core.resource.list.ResourceList;
@@ -50,7 +50,7 @@ public class AddressRepositoryImpl extends ResourceRepositoryBase<Address, Long>
         S ret = null;
         try {
             session.getTransaction().begin();
-            session.merge(s);
+            session.save(s);
             session.getTransaction().commit();
             ret = s;
         } catch (Exception ex) {

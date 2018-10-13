@@ -1,5 +1,5 @@
 crnk:
-  resourcePackage: com.cemoli.crnk
+  resourcePackage: com.cemoli.crnk.domain
   domainName: http://localhost:9090/cemoli
   pathPrefix: /api
 

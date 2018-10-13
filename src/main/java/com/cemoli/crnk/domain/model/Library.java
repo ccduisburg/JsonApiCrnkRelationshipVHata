@@ -1,13 +1,18 @@
-package com.cemoli.crnk.model;
+package com.cemoli.crnk.domain.model;
 
-import com.codenotfound.crnk.domain.model.Adress;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.List;
 
 
-@Data
+
 @Entity
+@Table(name="library")
+@Getter
+@Setter
 public class Library {
     @Id
     @GeneratedValue
@@ -17,7 +22,7 @@ public class Library {
     private String name;
 
     @OneToOne
-    @JoinColumn(name = "address_id")
+//    @JoinColumn(name = "address_id")
   //  @RestResource(path = "libraryAddress", rel="address")
     private Address address;
 

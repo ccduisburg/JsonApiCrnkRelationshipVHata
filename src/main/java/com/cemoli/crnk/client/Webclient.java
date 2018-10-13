@@ -1,9 +1,8 @@
 package com.cemoli.crnk.client;
 
 
-import com.cemoli.crnk.model.Book;
-import com.cemoli.crnk.model.BookCategory;
-import com.codenotfound.crnk.domain.model.*;
+import com.cemoli.crnk.domain.model.Book;
+import com.cemoli.crnk.domain.model.BookCategory;
 import io.crnk.client.CrnkClient;
 import io.crnk.core.queryspec.QuerySpec;
 import io.crnk.core.repository.ResourceRepositoryV2;
