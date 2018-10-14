@@ -1,6 +1,6 @@
-package com.cemoli.crnk.repository;
+package com.cemoli.crnk.domain.repository;
 
-import com.cemoli.crnk.model.Library;
+import com.cemoli.crnk.domain.model.Library;
 import io.crnk.core.queryspec.QuerySpec;
 import io.crnk.core.repository.ResourceRepositoryBase;
 import io.crnk.core.resource.list.ResourceList;
@@ -50,7 +50,7 @@ public class LibrarRepositoryImpl extends ResourceRepositoryBase<Library, Long> 
         S ret = null;
         try {
             session.getTransaction().begin();
-            session.merge(s);
+            session.save(s);
             session.getTransaction().commit();
             ret = s;
         } catch (Exception ex) {

@@ -1,7 +1,9 @@
-package com.cemoli.crnk.repository;
+package com.cemoli.crnk.domain.repository;
 
-import com.cemoli.crnk.model.BookCategory;
+import com.cemoli.crnk.domain.model.Book;
+
 import io.crnk.core.queryspec.QuerySpec;
+
 import io.crnk.core.repository.ResourceRepositoryBase;
 import io.crnk.core.resource.list.ResourceList;
 import org.hibernate.Session;
@@ -10,13 +12,12 @@ import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-
 @Component
-public class BookCategoryRepositoryImpl  extends ResourceRepositoryBase<BookCategory, Long> implements BookCategoryRepository {
+public class BookRepositoryImp extends ResourceRepositoryBase<Book, Long> implements BookRepository {
 
     private SessionFactory sessionFactory;
 
-    protected BookCategoryRepositoryImpl(Class<BookCategory> resourceClass) {
+    protected BookRepositoryImp(Class<Book> resourceClass) {
         super(resourceClass);
         initSessionFactory();
     }
@@ -33,26 +34,26 @@ public class BookCategoryRepositoryImpl  extends ResourceRepositoryBase<BookCate
 
 
 
-    public BookCategoryRepositoryImpl() {
-        this(BookCategory.class);
+    public BookRepositoryImp() {
+        this(Book.class);
     }
 
     @Override
-    public ResourceList<BookCategory> findAll(QuerySpec querySpec) {
+    public ResourceList<Book> findAll(QuerySpec querySpec) {
         Session session = sessionFactory.openSession();
-        List<BookCategory> bookCategory = null;
-        bookCategory = session.createQuery("from BookCategory", BookCategory.class).getResultList();
+        List<Book> adress = null;
+        adress = session.createQuery("from Book", Book.class).getResultList();
         session.close();
-        return querySpec.apply(bookCategory);
+        return querySpec.apply(adress);
     }
 
     @Override
-    public <S extends BookCategory> S save(S s) {
+    public <S extends Book> S save(S s) {
         Session session = sessionFactory.openSession();
         S ret = null;
         try {
             session.getTransaction().begin();
-            session.merge(s);
+            session.save(s);
             session.getTransaction().commit();
             ret = s;
         } catch (Exception ex) {
@@ -65,7 +66,7 @@ public class BookCategoryRepositoryImpl  extends ResourceRepositoryBase<BookCate
     }
 
     @Override
-    public <S extends BookCategory> S create(S s) {
+    public <S extends Book> S create(S s) {
         Session session = sessionFactory.openSession();
         S ret = null;
         try {
@@ -87,8 +88,8 @@ public class BookCategoryRepositoryImpl  extends ResourceRepositoryBase<BookCate
         Session session = sessionFactory.openSession();
         try {
             session.getTransaction().begin();
-            BookCategory bookCategory = session.find(BookCategory.class, id);
-            session.delete(bookCategory);
+            Book book = session.find(Book.class, id);
+            session.delete(book);
             session.getTransaction().commit();
         } catch (Exception ex) {
             ex.printStackTrace();

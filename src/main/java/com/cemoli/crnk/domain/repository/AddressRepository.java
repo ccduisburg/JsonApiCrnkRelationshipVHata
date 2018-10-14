@@ -1,6 +1,6 @@
-package com.cemoli.crnk.repository;
+package com.cemoli.crnk.domain.repository;
 
-import com.cemoli.crnk.model.Address;
+import com.cemoli.crnk.domain.model.Address;
 
 import io.crnk.core.repository.ResourceRepositoryV2;
 
